@@ -1,6 +1,7 @@
 from textual.widgets import Static
 from textual.reactive import reactive
 from models import Note
+from rich.markdown import Markdown
 
 class StickyNote(Static):
     can_focus = True
@@ -35,9 +36,21 @@ class StickyNote(Static):
     def on_mount(self, event):
         self.update_title()
         self.update_border_color()
+        self.update_content()
 
     def compose(self):
-        yield Static(self.note.content, id="noteContent")
+        yield Static("", id="noteContent")
+        yield Static("", id="noteTimestamp")
+
+    def update_content(self):
+        """Update the content using Markdown rendering and update timestamp"""
+        content_widget = self.query_one("#noteContent", Static)
+        # Use Markdown from rich to render the content
+        content_widget.update(Markdown(self.note.content))
+        
+        # Update timestamp display
+        timestamp_widget = self.query_one("#noteTimestamp", Static)
+        timestamp_widget.update(f"🕒 {self.note.last_updated}")
 
     def update_title(self):
         """Update border title with pin and priority indicators"""

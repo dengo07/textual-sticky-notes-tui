@@ -121,17 +121,26 @@ Once the application is running, you can use the following keys to interact with
 | **`a`** | **Add Note** | Create a new sticky note. |
 | **`e`** | **Edit Note** | Edit the content, title, priority, or pin status of the focused note. |
 | **`r`** | **Remove Note** | Delete the currently focused note (triggers a confirmation modal). |
+| **`f`** | **Focus View** | Open the selected note in fullscreen Markdown mode. |
+| **`t`** | **Tags** | Toggle the sidebar to filter notes by tags. |
+| **`c`** | **Copy** | Copy focused note content to system clipboard. |
+| **`v`** | **Paste** | Create a new note from system clipboard content. |
 | **`s`** | **Search** | Open the search modal to find specific notes. |
 | **`o`** | **Sort** | Sort notes automatically (Pinned first, then by Priority). |
+| **`?`** | **Help** | Show the help modal with all keybindings. |
+| **`F1`** | **About** | Show app information and GitHub links. |
 | **`d`** | **Toggle Theme** | Switch between Dark and Light mode. |
 | **`Ctrl+s`** | **Save** | Manually force save to disk. |
+| **`Ctrl+l`** | **Load** | Manually reload notes from disk. |
+| **`Ctrl+e`** | **Export** | Export all notes to a specific JSON file. |
+| **`Ctrl+g`** | **Import** | Import notes from a JSON file (Smart Merge by ID). |
 | **`Ctrl+c`** | **Quit** | Force quit the application. |
  
 ### Navigation
 
 | Key | Action |
 | :--- | :--- |
-| **`Arrow Keys`**or**`h-j-k-l`** | Move focus between notes. |
+| **`Arrow Keys`** or **`h-j-k-l`** | Move focus between notes. |
 | **`Tab`** | Move focus between parts inside a modal. |
 
 ### Styling (When a note is focused)
@@ -161,12 +170,23 @@ Notes display visual icons corresponding to their priority level and pin status.
 
 ## Configuration & Storage
 
-The application uses an intelligent storage system that respects your operating system's standards. You do not need to configure anything; it just works.
+The application uses an intelligent storage system that respects your operating system's standards.
 
-**Data Location:**
-* **Linux:** `~/.local/share/sticky-notes/notes.json` (XDG Base Directory)
-* **macOS:** `~/Library/Application Support/StickyNotes/notes.json`
-* **Windows:** `%APPDATA%\StickyNotes\notes.json`
+### Data Location
+* **Linux:** `~/.local/share/sticky-notes-tui/notes.json`
+* **macOS:** `~/Library/Application Support/sticky-notes-tui/notes.json`
+* **Windows:** `%APPDATA%\sticky-notes-tui\notes.json`
+
+### Syncing Between Devices
+To sync your notes between devices (e.g., Linux and Mac), you can override the default storage directory using the `STICKY_NOTES_DIR` environment variable. 
+
+For example, if you use a cloud-synced folder like Dropbox or a Git repository:
+
+```bash
+# On Mac/Linux
+export STICKY_NOTES_DIR="/path/to/your/synced/folder"
+uv run python src/main.py
+```
 
 The data is saved in a human-readable JSON format, allowing for easy backup or manual inspection if necessary.
 

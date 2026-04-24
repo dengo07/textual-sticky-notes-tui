@@ -1,0 +1,20 @@
+[
+  {
+    "noteTitle": "Testez alta nota cu emoji si markdown",
+    "content": "1. Linia 1\n2. ⚠️  Linia 2 - eurovision2026\n- Write **Markdown**\n- Add #tags\n- Use emojis ✅",
+    "tags": " eurovision2026",
+    "priority": 4,
+    "pinned": true,
+    "note_id": "f4e65597-5333-4b52-b0ab-0791b87701a2",
+    "color": "white"
+  },
+  {
+    "noteTitle": "Noua notita",
+    "content": "Am creat si in Mac sticky-notes\n acum si cu import/export feature :)\n\nKey \tAction\nArrow Keysorh-j-k-l \tMove focus between notes.\nTab \tMove focus between parts inside a modal.",
+    "tags": "",
+    "priority": 3,
+    "pinned": true,
+    "note_id": "ed9d1c25-923c-494b-8ce3-cf0d53b3c15e",
+    "color": "#fdffb6"
+  }
+]
